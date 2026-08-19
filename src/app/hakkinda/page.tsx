@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { editorsNote, aboutContent } from "@/data/content";
 import RoseIcon from "@/components/RoseIcon";
+import MusicToggle from "@/components/MusicToggle";
 
 export const metadata: Metadata = {
   title: "Editörden — Yaz Gülleri",
@@ -24,9 +25,12 @@ export default function HakkindaPage() {
 
       <div className="relative z-[2] mx-auto max-w-[760px]">
         <div className="mb-16 flex items-center justify-between">
-          <Link href="/" className="text-accent-terra" aria-label="Yaz Gülleri">
-            <RoseIcon className="h-6 w-6" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/" className="text-accent-terra" aria-label="Yaz Gülleri">
+              <RoseIcon className="h-6 w-6" />
+            </Link>
+            <MusicToggle />
+          </div>
           <Link
             href="/#hakkinda"
             className="nav-link-underline text-xs font-medium uppercase tracking-[-0.12px]"

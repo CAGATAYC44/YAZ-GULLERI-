@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { aboutContent } from "@/data/content";
 import RevealOnScroll from "./RevealOnScroll";
 
@@ -65,12 +66,12 @@ export default function About() {
           <p className="mt-6 max-w-[460px] font-serif text-xl italic leading-8 text-accent-terra">
             {aboutContent.dedication}
           </p>
-          <a
+          <Link
             href={aboutContent.readMoreHref}
             className="nav-link-underline mt-8 inline-block text-xs font-medium uppercase tracking-[-0.12px] text-light"
           >
             {aboutContent.readMoreLabel} →
-          </a>
+          </Link>
         </RevealOnScroll>
       </div>
     </section>

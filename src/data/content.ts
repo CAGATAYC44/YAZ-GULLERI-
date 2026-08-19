@@ -152,6 +152,11 @@ export const contactContent = {
 
 export const footerBadge = "YAYINDA";
 
+export const backgroundMusic = {
+  src: "/audio/arka-plan-muzigi.mp3",
+  volume: 0.4,
+};
+
 export const siteMeta = {
   title: "Yaz Gülleri — Gülşen Mete",
   description:

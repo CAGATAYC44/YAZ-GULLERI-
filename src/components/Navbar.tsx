@@ -4,6 +4,7 @@ import { useState } from "react";
 import { navLinks, contactBadge } from "@/data/content";
 import RoseIcon from "./RoseIcon";
 import MobileMenu from "./MobileMenu";
+import MusicToggle from "./MusicToggle";
 import { useScrollParallax } from "@/hooks/useScrollParallax";
 
 export default function Navbar() {
@@ -18,13 +19,16 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-[1340px] items-center justify-between px-[15px] py-9 text-light">
-        <a
-          href="#"
-          className="group text-accent-terra transition-colors duration-300 hover:text-light"
-          aria-label="Yaz Gülleri"
-        >
-          <RoseIcon className="h-6 w-6 transition-transform duration-300 ease-spring group-hover:scale-110 group-hover:rotate-[10deg]" />
-        </a>
+        <div className="flex items-center gap-4">
+          <a
+            href="#"
+            className="group text-accent-terra transition-colors duration-300 hover:text-light"
+            aria-label="Yaz Gülleri"
+          >
+            <RoseIcon className="h-6 w-6 transition-transform duration-300 ease-spring group-hover:scale-110 group-hover:rotate-[10deg]" />
+          </a>
+          <MusicToggle />
+        </div>
 
         <nav className="mobile:hidden flex items-center gap-8">
           {navLinks.map((link) => (

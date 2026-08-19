@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Figtree } from "next/font/google";
 import { siteMeta } from "@/data/content";
+import { MusicProvider } from "@/components/MusicProvider";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className={`${fraunces.variable} ${figtree.variable}`}>
       <body className="bg-dark font-sans text-light antialiased">
-        {children}
+        <MusicProvider>{children}</MusicProvider>
       </body>
     </html>
   );

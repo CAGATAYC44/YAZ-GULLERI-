@@ -125,6 +125,23 @@ body {
 }
 
 /* ---------------------------------------------
+   Music toggle — gentle pulse while playing
+---------------------------------------------- */
+@keyframes musicPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+.music-playing {
+  animation: musicPulse 1.8s ease-in-out infinite;
+}
+
+/* ---------------------------------------------
    Footer book — gentle float
 ---------------------------------------------- */
 @keyframes footerFloat {
