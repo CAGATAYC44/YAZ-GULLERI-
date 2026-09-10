@@ -120,8 +120,8 @@ export const meetingTeaser = {
   dateline: "ArenaPark · 6 Eylül 2026",
   note: "Sayfalar arasında yaşayan mısralar, bir Eylül günü gerçek yüzlerle buluştu.",
   image: {
-    src: "/imza-gunu/imza-22.jpg",
-    alt: "Gülşen Mete bir okuruna ithaf yazarken",
+    src: "/imza-gunu/imza-thumbnail.jpg",
+    alt: "Gülşen Mete imza masasında, ArenaPark'ın kuşbakışı görünümü eşliğinde",
   },
   ctaLabel: "Daha Fazlası",
   ctaHref: "/imza-gunu",
@@ -135,9 +135,13 @@ export const meetingGallery = {
   dateline: "ArenaPark · 6 Eylül 2026",
   intro:
     "Sayfalar arasında yaşayan mısralar, bir Eylül günü gerçek yüzlerle buluştu. Her imza bir tanışıklığın başlangıcı, her gülümseme bir mısranın karşılık bulduğu an oldu.",
-  video: "/videos/imza-gunu.mp4",
+  videos: [
+    { src: "/videos/imza-gunu.mp4", alt: "İmza masasında Gülşen Mete okurlarıyla" },
+    { src: "/videos/imza-panda.mp4", alt: "İmza gününde bir maskotla eğlenceli an" },
+  ] satisfies MeetingImage[],
+  introVideo: "/videos/arenapark-giris.mp4",
   interludeOne:
-    "“Kırgın çiçekler, yıllarca sayfalarda beklediler; o gün, kalabalığın içinde birer birer isim buldular.”",
+    "“Kırgın çiçekler, yıllarca sayfalarda beklediler; o gün, ArenaPark'ın kalabalığında birer birer isim buldular.”",
   interludeTwo:
     "“Bu kitabı elime alan, bana gülümseyen, sırasını sabırla bekleyen her okuruma... Beni bu yolculukta yalnız bırakmadığınız için yürekten teşekkür ederim.” — Gülşen Mete",
   images: [

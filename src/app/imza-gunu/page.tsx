@@ -4,6 +4,8 @@ import { meetingGallery } from "@/data/content";
 import RoseIcon from "@/components/RoseIcon";
 import MusicToggle from "@/components/MusicToggle";
 import MeetingGallery from "@/components/MeetingGallery";
+import VideoCarousel from "@/components/VideoCarousel";
+import SwipeHint from "@/components/SwipeHint";
 
 export const metadata: Metadata = {
   title: "Buluşma — Yaz Gülleri",
@@ -44,15 +46,9 @@ export default function ImzaGunuPage() {
           </p>
         </div>
 
-        <div className="relative mt-12 aspect-video w-full overflow-hidden">
-          <video
-            src={meetingGallery.video}
-            className="imza-photo-tone h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
+        <div className="mt-12">
+          <SwipeHint />
+          <VideoCarousel videos={meetingGallery.videos} />
         </div>
 
         <p className="mx-auto mt-16 max-w-[620px] text-center font-serif text-xl italic leading-8 text-accent-terra mobile:text-lg mobile:leading-7">
@@ -60,7 +56,8 @@ export default function ImzaGunuPage() {
         </p>
 
         <div className="mt-16">
-          <MeetingGallery images={meetingGallery.images} />
+          <SwipeHint />
+          <MeetingGallery images={meetingGallery.images} introVideo={meetingGallery.introVideo} />
         </div>
 
         <p className="mx-auto mt-16 max-w-[620px] text-center font-serif text-xl italic leading-8 text-light/90 mobile:text-lg mobile:leading-7">

@@ -5,11 +5,19 @@ import type { MeetingImage } from "@/data/content";
 import Lightbox from "./Lightbox";
 import RoseIcon from "./RoseIcon";
 
-export default function MeetingGallery({ images }: { images: MeetingImage[] }) {
+type MeetingGalleryProps = {
+  images: MeetingImage[];
+  introVideo?: string;
+};
+
+export default function MeetingGallery({ images, introVideo }: MeetingGalleryProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const videoOffset = introVideo ? 1 : 0;
+  const totalSlides = images.length + videoOffset;
 
   useEffect(() => {
     const track = trackRef.current;
@@ -64,11 +72,31 @@ export default function MeetingGallery({ images }: { images: MeetingImage[] }) {
         ref={trackRef}
         className="no-scrollbar flex h-[440px] snap-x snap-mandatory gap-4 overflow-x-auto mobile:h-[260px] mobile:gap-3"
       >
+        {introVideo && (
+          <div
+            ref={(el) => {
+              slideRefs.current[0] = el;
+            }}
+            className="h-full flex-shrink-0 snap-start"
+          >
+            <div className="block h-full border border-light/15 p-1.5">
+              <video
+                src={introVideo}
+                className="imza-photo-tone h-full w-auto"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </div>
+        )}
+
         {images.map((image, i) => (
           <div
             key={image.src}
             ref={(el) => {
-              slideRefs.current[i] = el;
+              slideRefs.current[i + videoOffset] = el;
             }}
             className="h-full flex-shrink-0 snap-start"
           >
@@ -98,9 +126,9 @@ export default function MeetingGallery({ images }: { images: MeetingImage[] }) {
       </button>
       <button
         type="button"
-        onClick={() => scrollToIndex(Math.min(images.length - 1, activeIndex + 1))}
+        onClick={() => scrollToIndex(Math.min(totalSlides - 1, activeIndex + 1))}
         aria-label="Sonraki görsel"
-        disabled={activeIndex === images.length - 1}
+        disabled={activeIndex === totalSlides - 1}
         className="absolute right-2 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center border border-light/30 bg-dark/70 text-xl text-light backdrop-blur-sm transition-colors hover:border-accent-terra disabled:opacity-0 md-tablet:flex desktop:flex"
       >
         ›
@@ -112,14 +140,14 @@ export default function MeetingGallery({ images }: { images: MeetingImage[] }) {
           <div
             className="absolute inset-0 overflow-hidden transition-[clip-path] duration-500 ease-out"
             style={{
-              clipPath: `inset(0 ${100 - ((activeIndex + 1) / images.length) * 100}% 0 0)`,
+              clipPath: `inset(0 ${100 - ((activeIndex + 1) / totalSlides) * 100}% 0 0)`,
             }}
           >
             <RoseIcon className="h-9 w-9 text-accent-terra" />
           </div>
         </div>
         <span className="text-[10px] font-medium uppercase tracking-[-0.1px] text-light/40">
-          {String(activeIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+          {String(activeIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
         </span>
       </div>
 
