@@ -14,6 +14,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------------------------------------------
+   Buluşma gallery — warm tone to match the
+   site's dark/terracotta palette
+---------------------------------------------- */
+.imza-photo-tone {
+  filter: sepia(0.16) saturate(1.15) contrast(1.05) brightness(0.96);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   background-color: #1f1d1c;
   color: #f9f8f6;

@@ -6,6 +6,7 @@ export type NavLink = {
 export const navLinks: NavLink[] = [
   { label: "Eserler", href: "#eserler" },
   { label: "Hakkında", href: "#hakkinda" },
+  { label: "Buluşma", href: "/imza-gunu" },
   { label: "Okuyuculardan", href: "#okuyuculardan" },
   { label: "İletişim", href: "#iletisim" },
 ];
@@ -105,6 +106,62 @@ export const editorsNote = {
   ],
   closing:
     "“Yaz Gülleri”, İsveç'in karlarında açan bir Anadolu çiçeğinin, ömrünü çocuklara adamış naif bir ruhun ve en derin duyguların 51 yıl sonra kâğıda dökülen muazzam manifestosudur.",
+};
+
+export type MeetingImage = {
+  src: string;
+  alt: string;
+};
+
+// Homepage teaser — a single image and a short note, linking to the full page.
+export const meetingTeaser = {
+  eyebrow: "İMZA GÜNÜ",
+  title: "Buluşma",
+  dateline: "ArenaPark · 6 Eylül 2026",
+  note: "Sayfalar arasında yaşayan mısralar, bir Eylül günü gerçek yüzlerle buluştu.",
+  image: {
+    src: "/imza-gunu/imza-22.jpg",
+    alt: "Gülşen Mete bir okuruna ithaf yazarken",
+  },
+  ctaLabel: "Daha Fazlası",
+  ctaHref: "/imza-gunu",
+};
+
+// Standalone page — full gallery, video and the day's story.
+// Only landscape frames are used; portrait shots were excluded to keep the grid intact.
+export const meetingGallery = {
+  eyebrow: "İMZA GÜNÜ",
+  title: "Buluşma",
+  dateline: "ArenaPark · 6 Eylül 2026",
+  intro:
+    "Sayfalar arasında yaşayan mısralar, bir Eylül günü gerçek yüzlerle buluştu. Her imza bir tanışıklığın başlangıcı, her gülümseme bir mısranın karşılık bulduğu an oldu.",
+  video: "/videos/imza-gunu.mp4",
+  interludeOne:
+    "“Kırgın çiçekler, yıllarca sayfalarda beklediler; o gün, kalabalığın içinde birer birer isim buldular.”",
+  interludeTwo:
+    "“Bu kitabı elime alan, bana gülümseyen, sırasını sabırla bekleyen her okuruma... Beni bu yolculukta yalnız bırakmadığınız için yürekten teşekkür ederim.” — Gülşen Mete",
+  images: [
+    { src: "/imza-gunu/imza-10.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-ana.jpg", alt: "Gülşen Mete bir genç okuruyla" },
+    { src: "/imza-gunu/imza-02.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-04.jpg", alt: "Gülşen Mete bir aileyle" },
+    { src: "/imza-gunu/imza-06.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-07.jpg", alt: "Gülşen Mete genç okurlarıyla" },
+    { src: "/imza-gunu/imza-stand.jpg", alt: "İmza masasında Yaz Gülleri nüshaları" },
+    { src: "/imza-gunu/imza-08.jpg", alt: "Gülşen Mete bir okuruyla" },
+    { src: "/imza-gunu/imza-09.jpg", alt: "Gülşen Mete bir aileyle" },
+    { src: "/imza-gunu/imza-11.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-12.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-13.jpg", alt: "Gülşen Mete bir aileyle" },
+    { src: "/imza-gunu/imza-14.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-16.jpg", alt: "Gülşen Mete okurlarıyla" },
+    { src: "/imza-gunu/imza-17.jpg", alt: "Gülşen Mete bir okuruyla" },
+    { src: "/imza-gunu/imza-18.jpg", alt: "Gülşen Mete genç okurlarıyla" },
+    { src: "/imza-gunu/imza-19.jpg", alt: "ArenaPark'ta imza günü standı" },
+    { src: "/imza-gunu/imza-20.jpg", alt: "Gülşen Mete bir okuruyla" },
+    { src: "/imza-gunu/imza-21.jpg", alt: "İmza günü standında okurlarla" },
+    { src: "/imza-gunu/imza-ms.jpg", alt: "Gülşen Mete bir okuruyla" },
+  ] satisfies MeetingImage[],
 };
 
 export type Testimonial = {

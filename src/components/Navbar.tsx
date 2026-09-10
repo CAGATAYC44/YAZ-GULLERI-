@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { navLinks, contactBadge } from "@/data/content";
 import RoseIcon from "./RoseIcon";
 import MobileMenu from "./MobileMenu";
@@ -31,13 +32,23 @@ export default function Navbar() {
         </div>
 
         <nav className="mobile:hidden flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link-underline">
-              <span className="text-xs font-medium uppercase tracking-[-0.12px]">
-                {link.label}
-              </span>
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith("/") ? (
+              <Link key={link.href} href={link.href} className="group relative">
+                <span className="pointer-events-none absolute -inset-x-3 -inset-y-2 rounded-full bg-accent-terra/0 transition-colors duration-300 ease-out group-hover:bg-accent-terra/10" />
+                <span className="nav-link-underline relative text-xs font-medium uppercase tracking-[-0.12px]">
+                  {link.label}
+                </span>
+              </Link>
+            ) : (
+              <a key={link.href} href={link.href} className="group relative">
+                <span className="pointer-events-none absolute -inset-x-3 -inset-y-2 rounded-full bg-accent-terra/0 transition-colors duration-300 ease-out group-hover:bg-accent-terra/10" />
+                <span className="nav-link-underline relative text-xs font-medium uppercase tracking-[-0.12px]">
+                  {link.label}
+                </span>
+              </a>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-6">

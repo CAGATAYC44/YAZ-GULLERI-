@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { navLinks, contactBadge } from "@/data/content";
 
 type MobileMenuProps = {
@@ -12,16 +13,27 @@ export default function MobileMenu({ isOpen, onLinkClick }: MobileMenuProps) {
     <div className={`mobile-menu-grid ${isOpen ? "is-open" : ""}`}>
       <div>
         <nav className="flex flex-col gap-5 border-t border-light/15 py-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={onLinkClick}
-              className="text-[28px] font-medium uppercase leading-8 tracking-[-0.84px] text-light"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.href.startsWith("/") ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={onLinkClick}
+                className="text-[28px] font-medium uppercase leading-8 tracking-[-0.84px] text-light"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={onLinkClick}
+                className="text-[28px] font-medium uppercase leading-8 tracking-[-0.84px] text-light"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <a
             href={contactBadge.href}
             onClick={onLinkClick}

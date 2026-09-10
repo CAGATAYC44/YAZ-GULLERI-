@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import BookShowcase from "./BookShowcase";
 import About from "./About";
+import Bulusma from "./Bulusma";
 import Testimonials from "./Testimonials";
 import Contact from "./Contact";
 import Footer from "./Footer";
@@ -23,6 +24,7 @@ export default function HomeExperience() {
       </section>
       <BookShowcase />
       <About />
+      <Bulusma />
       <Testimonials />
       <Contact />
       <Footer />
