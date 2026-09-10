@@ -13,11 +13,24 @@ type MeetingGalleryProps = {
 export default function MeetingGallery({ images, introVideo }: MeetingGalleryProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const introVideoRef = useRef<HTMLVideoElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const videoOffset = introVideo ? 1 : 0;
   const totalSlides = images.length + videoOffset;
+
+  // Mobile browsers cap how many videos can autoplay at once on a page;
+  // only play the intro video while its slide is actually active.
+  useEffect(() => {
+    const video = introVideoRef.current;
+    if (!video) return;
+    if (activeIndex === 0) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [activeIndex]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -81,9 +94,9 @@ export default function MeetingGallery({ images, introVideo }: MeetingGalleryPro
           >
             <div className="block h-full border border-light/15 p-1.5">
               <video
+                ref={introVideoRef}
                 src={introVideo}
                 className="imza-photo-tone h-full w-auto"
-                autoPlay
                 muted
                 loop
                 playsInline

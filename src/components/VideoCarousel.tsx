@@ -7,7 +7,21 @@ import RoseIcon from "./RoseIcon";
 export default function VideoCarousel({ videos }: { videos: MeetingImage[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Mobile browsers cap how many videos can autoplay at once on a page;
+  // only the active slide plays so it doesn't lose that budget to off-screen ones.
+  useEffect(() => {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i === activeIndex) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [activeIndex]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -72,9 +86,11 @@ export default function VideoCarousel({ videos }: { videos: MeetingImage[] }) {
           >
             <div className="block h-full border border-light/15 p-1.5">
               <video
+                ref={(el) => {
+                  videoRefs.current[i] = el;
+                }}
                 src={item.src}
                 className="imza-photo-tone h-full w-auto"
-                autoPlay
                 muted
                 loop
                 playsInline
